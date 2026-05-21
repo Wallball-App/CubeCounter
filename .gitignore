@@ -1,0 +1,6 @@
+.vscode/
+build/
+_deps/
+CMakeFiles/
+Testing/
+Main.exe
