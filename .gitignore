@@ -4,3 +4,4 @@ _deps/
 CMakeFiles/
 Testing/
 Main.exe
+CMakeUserPresets.json

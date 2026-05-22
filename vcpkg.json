@@ -2,15 +2,25 @@
     "name": "cubecounter",
     "version-string": "1.0.0",
     "dependencies" : [
-        "sdl3",
-        "gmp",
-        "glm",
-        {
-            "name": "imgui",
-            "features" : [
-                "sdl3-binding",
-                "opengl3-binding"
+        "gmp"
+    ],
+    "default-features": [
+        "gui"
+    ],
+    "features": {
+        "gui": {
+            "description": "Build the GUI version of the application",
+            "dependencies": [
+                "sdl3",
+                "glm",
+                {
+                    "name": "imgui",
+                    "features" : [
+                        "sdl3-binding",
+                        "opengl3-binding"
+                    ]
+                }
             ]
         }
-    ]
+    }
 }

@@ -117,7 +117,7 @@ void UI::quit() {
 void UI::UpdateCalculation(int idx) {
     ImGui::TextWrapped("Number of Combinations: ");
     if(calculation->returnNumDigits(idx) > 20) {
-        ImGui::TextWrapped(numcombos_scientific.c_str());
+        ImGui::TextWrapped("Number too large to display.");
     } else {
         ImGui::TextWrapped(numcombos.c_str());
     }

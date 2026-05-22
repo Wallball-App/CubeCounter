@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     if(calculation.returnNumDigits(LAYERS) < 50 || PRINTFULLNUMBER) {
         std::cout<<numcombos.c_str()<<std::endl;
     } else {
-        std::cout<<numcombos_scientific.c_str()<<std::endl;
+        std::cout<<"[Info] Number too large to display fully."<<std::endl;
     }
     std::cout<<"Number of Combinations (Scientific): "<<std::endl;
     std::cout<<numcombos_scientific.c_str()<<std::endl;
