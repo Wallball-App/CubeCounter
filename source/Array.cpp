@@ -183,7 +183,7 @@ void Array::bind() {
 
     glGenBuffers(1, &instanceVBO);
     glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, planes.size() * sizeof(Plane), planes.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, planes.size() * sizeof(Plane), planes.data(), GL_DYNAMIC_DRAW);
 
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Plane), (void*)0); //POSITION
     glEnableVertexAttribArray(1);

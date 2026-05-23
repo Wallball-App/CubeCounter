@@ -38,20 +38,20 @@ std::string Calculation::returnString10(mpz_class i) {
 }
 std::string Calculation::returnScientific(mpz_class i, int precision) {
     if(i == 1_mpz) return "1E0";
-    std::string str = i.get_str();
+    mpf_class f(i, (precision+10) * 4);
+    mp_exp_t exp;
+
+    std::string str = f.get_str(exp, 10, precision+1);
+
     bool negative = (str[0] == '-');
-    int startidx = (negative) ? 1 : 0;
-    int numdigits = str.length() - startidx;
-
-    if(numdigits <= 1) return str;
-
-    std::string first = str.substr(startidx, 1);
-    std::string decimal = str.substr(startidx+1, precision);
-    int exp = numdigits - 1;
-
+    if(negative) str = str.substr(1);
     std::string result = (negative ? "-" : "");
-    result += first + "." + decimal + "E" + std::to_string(exp);
-
+    result += str[0];
+    result += '.';
+    if(str.length() > 1) {
+        result += str.substr(1, precision);
+    } 
+    result += "E" + std::to_string(exp-1);
     return result;
 }
 int Calculation::returnNumDigits(int i) {
@@ -61,7 +61,7 @@ int Calculation::returnNumDigits(int i) {
     double c = 23.7927056702;
     double d = 15.5114382199;
 
-    return floor(a + (i%2)*b + std::floor((i-2)/2)*c + std::floor(pow((i-2)/2,2))*d) + 1;
+    return floor(a + (i%2)*b + std::floor((i-2)/2)*c + std::floor(pow((i-2)/2.0,2))*d) + 1;
 }
 int Calculation::returnTrailingZeros(int i) {
     if(i == 1) return 0;
